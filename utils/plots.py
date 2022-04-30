@@ -88,9 +88,12 @@ def plot_wh_methods():  # from utils.general import *; plot_wh_methods()
 
 def output_to_target(output, width, height):
     # Convert model output to target format [batch_id, class_id, x, y, w, h, conf]
-    if isinstance(output, torch.Tensor):
-        output = output.cpu().numpy()
-
+    # if isinstance(output, torch.Tensor):
+    #     output = output.cpu().numpy()
+    
+    # To avoid can't convert cuda:0 device type tensor to numpy. [In colab]
+    output = [temp.cpu().numpy() for temp in output]
+    
     targets = []
     for i, o in enumerate(output):
         if o is not None:
