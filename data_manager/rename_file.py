@@ -18,8 +18,9 @@ def change_name(folder,name,class_number):
 #PATH to data_folder
 root_folder = r'PATH_TO_DATA'
 
-# iterate all files from a directory
+#initialize the class number
 class_number = 0
+# iterate all files from a directory
 for train_type in os.listdir(root_folder):
     type_folder_PATH = root_folder + os.sep + train_type 
     for train_class in os.listdir(type_folder_PATH):
@@ -31,6 +32,8 @@ for train_type in os.listdir(root_folder):
                 labels_folder = folder + os.sep + 'labels' + os.sep
                 change_name(images_folder,'.jpg',str(class_number))
                 change_name(labels_folder,'.txt',str(class_number))
+                
+                #This section changes the class number in .txt file of each class /labels folder
                 for filename in os.listdir(labels_folder):
                     with open(os.path.join(labels_folder, filename), 'r') as f:
                         lines = f.readlines() 
