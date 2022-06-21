@@ -25,7 +25,7 @@ data
 If you don't want to use this structure. you have to change the code.<br>
 Each loop is to go inside a folder.
 
-#For move_file.py
+#For move.py
 You must have outdir that have folder structure like this
 <pre>
 [outdir]
